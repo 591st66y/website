@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>数据库设计规范 - OrderBy</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/iyish/images/master/5SAqKp.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=大叔张胖子,JRong,JR,柔软的胖子
+  
+    <meta name="description" content="JRong学习记录博客">
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">OrderBy</a>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+     
+    </ul>
+  </nav>
+</header>
+
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">数据库设计规范</h1>
+  </div>
+
+  <!-- 文章目录 -->
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库设计规范"><span class="toc-text">数据库设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基础规范"><span class="toc-text">一、基础规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、数据库命名规范"><span class="toc-text">二、数据库命名规范</span></a></li></ol></li></ol>
+
+  <div class="post-content">
+    <h1 id="数据库设计规范"><a href="#数据库设计规范" class="headerlink" title="数据库设计规范"></a>数据库设计规范</h1><p><img src="https://img.jrong.org/blog/imgs/20190531112647.jpeg" alt=""></p>
+<h2 id="一、基础规范"><a href="#一、基础规范" class="headerlink" title="一、基础规范"></a>一、基础规范</h2><p><strong>1、必须使用InnoDB数据库存储引擎</strong></p>
+<blockquote>
+<p>支持事务、行级锁、并发性能更好、CPU及内存缓存页优化使得资源利用率更高</p>
+</blockquote>
+<p><strong>2、表字符集默认使用utf-8，必要时候使用utf8mb4</strong></p>
+<blockquote>
+<p>通用，无乱码风险，汉字3字节，英文1字节。2、utf8mb4是utf8的超集，有存储4字节例如表情符号时，使用它</p>
+</blockquote>
+<p><strong>3、数据表、数据字段必须加入中文注释</strong></p>
+<blockquote>
+<p>随着时间的增长，你的数据库表会越来越多，字段也会越来越多，谁也不能能全部记住每张表或每个字段是做什么的，so 给它们添加注释</p>
+</blockquote>
+<p><strong>4、数据表、数据字段必须加入中文注释</strong></p>
+<blockquote>
+<p>a).对于互联网应用来说业务层能做的事情就不要放到数据库层上来操作，对数据库性能影响较大，甚至会宕机；<br>b).调试，迁移，排错，可扩展性；</p>
+</blockquote>
+<p><strong>5、禁止将大文件或影像文件存储到数据库中</strong></p>
+<blockquote>
+<p>有文件存储服务器不用，干嘛要存到数据库中，数据库也不是它的归宿啊；</p>
+</blockquote>
+<h2 id="二、数据库命名规范"><a href="#二、数据库命名规范" class="headerlink" title="二、数据库命名规范"></a>二、数据库命名规范</h2><p><strong>1、库名，表名，列名必须用小写，根据业务模块不同采用下划线分隔</strong></p>
+<blockquote>
+<p>a).<del>Sys_User</del> = sys_user<br>b).举个🌰：sys_xxx 系统_xxx表  🙂</p>
+</blockquote>
+<p><strong>2、库名，表名，列名必须见名知义，长度不要超过32字符，禁止拼音英文混用</strong></p>
+<blockquote>
+<p><del>temp</del>  <del>yhm</del> 时间久了  谁知道这是干嘛用的 ，智障吗 🔨</p>
+</blockquote>
+<p><strong>3、数据库索引</strong></p>
+<blockquote>
+<p>a).索引是一把双刃剑 ，索引的占用空间是成倍增长的，并且还会增加IO读写，<br>b).一张表索引的数量控制在5个以内，或者不要超过表字段数量的20%</p>
+</blockquote>
+<p><strong>4、索引设计规范</strong></p>
+<blockquote>
+<p>a).禁止在更新十分频繁、区分度不高的属性上建立索引;<br>b).更新会变更B+树，更新频繁的字段建立索引会大大降低数据库性能;<br>c).“性别”这种区分度不大的属性，建立索引是没有什么意义的，不能有效过滤数据，性能与全表扫描类似。一般来说，同值的数据超过表的百分之十五，那就没必要建索引了;<br>d).建立组合索引，必须把区分度高的字段放在前面,理解组合索引最左前缀原则，避免重复建设索引，如果建立了(a,b,c)，相当于建立了(a), (a,b), (a,b,c)</p>
+</blockquote>
+
+  </div>
+  <div class="post-meta">
+    <span class="post-time" style="color:#646060;font-size:13px">2019-10-28</span>
+  </div>
+
+  <div class="post-footer">
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+
+<!-- 评论插件 -->
+
+<footer class="footer">
+  2019
+  <span class="author">
+    Orderby.JRong  
+  </span>
+    本站总访问量 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次
+</footer>
+
+
+    </div>
+  </body>
+</html>
