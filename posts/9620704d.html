@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>mysql 时间转换字符串 - OrderBy</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/iyish/images/master/5SAqKp.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=数据库开发,程序开发
+  
+    <meta name="description" content="JRong学习记录博客">
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">OrderBy</a>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+     
+    </ul>
+  </nav>
+</header>
+
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">mysql 时间转换字符串</h1>
+  </div>
+  <div class="post-meta">
+    <span class="post-time" style="color:#646060;font-size:13px">发布时间:2019-10-28 11:11:28</span>
+  </div>
+  <!-- 文章目录 去掉 不要了  by JRong 2019年10月28日09:58:31 -->
+  <!--  -->
+
+  <div class="post-content">
+    <p>在与数据库的操作中我们可能会碰到这样几种需求：</p>
+<p>1.需要插入数据的同时，数据库自动插入时间(这个时间非代码传递过来)</p>
+<pre><code>MySql: select now()
+Oracle: select SYSDATE()</code></pre><p>2.不巧的是，数据对于该时间的设计又不是date类型（一般不是日期类型就是字符串）</p>
+<pre><code>mysql:date_format(now(),&apos;%Y-%m-%d %H:%m:%s&apos;)</code></pre>
+  </div>
+  
+
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%80%E5%8F%91/" rel="tag">数据库开发</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" rel="tag">程序开发</a></li></ul>
+    
+
+    <a href="#top" class="top">返回顶部</a>
+  </div>
+</article>
+
+<!-- 评论插件 -->
+
+<footer class="footer">
+  2019
+  <span class="author">
+    Orderby.JRong  
+  </span>
+    本站总访问量 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次
+</footer>
+
+
+    </div>
+  </body>
+</html>
