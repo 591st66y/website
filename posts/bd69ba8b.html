@@ -1,52 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  
-  <title>数据库设计规范 - Naij`s Blog</title>
-  <link rel="icon" href="https://raw.githubusercontent.com/iyish/images/master/5SAqKp.png" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  
-  <meta name="keywords" content=数据库开发,程序开发
-  
-    <meta name="description" content="Naij记录博客">
-  
-  
-  
-
-  <link rel="stylesheet" href="/css/style.css">
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>
+        Naij`s Blog
+    </title>
+    <link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-  <body>
-    <div class="container">
-      <header class="header">
-  <div class="blog-title">
-    <a href="/" class="logo">Naij`s Blog</a>
-  </div>
-  <nav class="navbar">
-    <ul class="menu">
-     
-    </ul>
-  </nav>
-</header>
-
-<article class="post">
-  <div class="post-title">
-    <h1 class="article-title">数据库设计规范</h1>
-  </div>
-  <div class="post-meta">
-    <span class="post-time" style="color:#646060;font-size:13px">发布时间:2019-10-28 09:20:02</span>
-  </div>
-  <!-- 文章目录 去掉 不要了  by JRong 2019年10月28日09:58:31 -->
-  <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库设计规范"><span class="toc-text">数据库设计规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基础规范"><span class="toc-text">一、基础规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、数据库命名规范"><span class="toc-text">二、数据库命名规范</span></a></li></ol></li></ol> -->
-
-  <div class="post-content">
-    <h1 id="数据库设计规范"><a href="#数据库设计规范" class="headerlink" title="数据库设计规范"></a>数据库设计规范</h1><h2 id="一、基础规范"><a href="#一、基础规范" class="headerlink" title="一、基础规范"></a>一、基础规范</h2><p><strong>1、必须使用InnoDB数据库存储引擎</strong></p>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-reply replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            数据库设计规范
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="数据库设计规范"><a href="#数据库设计规范" class="headerlink" title="数据库设计规范"></a>数据库设计规范</h1><h2 id="一、基础规范"><a href="#一、基础规范" class="headerlink" title="一、基础规范"></a>一、基础规范</h2><p><strong>1、必须使用InnoDB数据库存储引擎</strong></p>
 <blockquote>
 <p>支持事务、行级锁、并发性能更好、CPU及内存缓存页优化使得资源利用率更高</p>
 </blockquote>
@@ -83,45 +60,49 @@
 <p>a).禁止在更新十分频繁、区分度不高的属性上建立索引;<br>b).更新会变更B+树，更新频繁的字段建立索引会大大降低数据库性能;<br>c).“性别”这种区分度不大的属性，建立索引是没有什么意义的，不能有效过滤数据，性能与全表扫描类似。一般来说，同值的数据超过表的百分之十五，那就没必要建索引了;<br>d).建立组合索引，必须把区分度高的字段放在前面,理解组合索引最左前缀原则，避免重复建设索引，如果建立了(a,b,c)，相当于建立了(a), (a,b), (a,b,c)</p>
 </blockquote>
 
-  </div>
-  
-
-  <div class="post-footer">
-    
-      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%80%E5%8F%91/" rel="tag">数据库开发</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" rel="tag">程序开发</a></li></ul>
-    
-
-    <a href="#top" class="top">返回顶部</a>
-  </div>
-</article>
-
-<!-- 百度推送 -->
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-<!-- 评论插件 -->
-
-<footer class="footer">
-  2020
-  <span class="author">
-    Orderby.Naij  
-  </span>
-    本站总访问量 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> 次
-</footer>
-
-
     </div>
-  </body>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p>Copyright © 2020 <a class="flink" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>-<a class="flink" href="https://github.com/sanjinhub/hexo-theme-geek" target="_blank" rel="noopener">Geek</a>.
+        <label class="el-switch el-switch-green el-switch-sm" style="vertical-align: sub;">
+            <input type="checkbox" name="switch" id="update_style">
+            <span class="el-switch-style"></span>
+        </label>
+    </p>
+</div>
+<input type="hidden" id="web_style" value="black">
+
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/highlight/highlight.pack.js"></script>
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script src="/js/js.js"></script>
+<style type="text/css">
+.v * {
+    color: #698fca;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #3a3e4a;
+}
+
+.v .vlist .vcard .vh .vmeta .vat {
+    color: #638fd5;
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #6ba1ff;
+}
+
+.v a {
+    color: #8696b1;
+}
+
+.v .vlist .vcard .vhead .vnick:hover {
+    color: #669bfc;
+}
+</style>
+</body>
+
 </html>
